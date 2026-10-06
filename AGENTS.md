@@ -5,7 +5,7 @@ RAG demo: FastAPI + LangChain + Gemini embeddings/chat, vector store in a **loca
 ## Layout & ownership
 
 - Root has **no application code**. `package.json` exists only to install the Supabase CLI (`supabase@^2.119.0`) via pnpm. Its `test` script is the npm placeholder and exits 1 — there are no tests in this repo.
-- `backend/` — the whole service (Python 3.13, `uv`). Contains its **own nested `.git` repo** (zero commits).
+- `backend/` — the whole service (Python 3.13, `uv`).
 - `supabase/` — local stack config (`config.toml`, `project_id = "RAG"`) + SQL migrations.
 - `fronted/` — empty (yes, the typo is in the directory name). No frontend yet; `backend/src/backend/main.py:41` hardcodes CORS for `http://localhost:3000`, so a frontend is expected there eventually.
 
@@ -54,8 +54,8 @@ Request models live in `src/vector/ingest.py` and `src/vector/chat.py`; `src/bac
 
 ## Git hygiene
 
-- The root repo has **no `.gitignore`**, `node_modules/` is installed at root, and `backend/.venv` + `backend/.env` are only ignored by `backend/.gitignore`. A bare `git add -A` at root would stage all of that. Stage explicit paths.
-- Root and `backend/` repos both have zero commits, so there is no established commit-message style yet.
+- Repositorio unificado (monorepo): un único repositorio Git en la raíz gestiona todo el proyecto (`backend/`, `supabase/`, etc.).
+- El archivo `.gitignore` en la raíz y `backend/.gitignore` ignoran `node_modules/`, `.venv/`, `.env`, y directorios temporales de Supabase.
 
 ## Language
 - All response in Spanish.
