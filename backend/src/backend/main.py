@@ -11,10 +11,11 @@ from backend.services.rag import RagService
 app = FastAPI(title="RAG API con Gemini")
 s = get_settings()
 url = s.ALLOW_ORIGINS
+origins = [o.strip() for o in url.split(",") if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=url,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
