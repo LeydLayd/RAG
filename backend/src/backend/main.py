@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException, Depends
+from backend.config import get_settings
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.schemas import IngestRequest, ChatRequest
@@ -8,10 +9,12 @@ from backend.services.ingestion import IngestionService
 from backend.services.rag import RagService
 
 app = FastAPI(title="RAG API con Gemini")
+s = get_settings()
+url = s.ALLOW_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=url,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

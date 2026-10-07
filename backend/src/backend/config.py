@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = 100
     RETRIEVER_K: int = 3
     RETRIEVAL_TOP_K: int = 3
+    ALLOW_ORIGINS: str
 
 @lru_cache
 def get_settings() -> Settings:
