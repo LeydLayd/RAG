@@ -115,3 +115,7 @@ La migración `supabase/migrations/20261005220555_init_rag.sql` define:
 - RPC `match_documents(query_embedding, match_count, filter)`
 
 Estos nombres son exactamente los que espera `SupabaseVectorStore` en `backend/src/backend/services/vector_store.py`. **Cambiar el modelo de embeddings o la dimensión requiere una nueva migración** (nunca editar una migración ya aplicada) y re-indexar todos los documentos, ya que los embeddings no son comparables entre modelos distintos.
+
+## Contribuciones
+
+Para colaborar en el proyecto, revisa nuestra guía en [CONTRIBUTING.md](CONTRIBUTING.md) para conocer el flujo de trabajo (GitFlow), convenciones de commits y pasos de verificación local.
